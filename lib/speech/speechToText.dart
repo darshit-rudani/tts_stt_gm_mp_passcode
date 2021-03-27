@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:avatar_glow/avatar_glow.dart';
+import '../constant.dart';
 
 class Speechtotext extends StatefulWidget {
   @override
@@ -54,6 +55,7 @@ class _SpeechtotextState extends State<Speechtotext> {
 
   @override
   Widget build(BuildContext context) {
+    bool keyboardIsOpened = MediaQuery.of(context).viewInsets.bottom != 0.0;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -74,29 +76,46 @@ class _SpeechtotextState extends State<Speechtotext> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        reverse: true,
-        child: Container(
-          padding: EdgeInsets.fromLTRB(25, 25, 25, 150),
-          child: Text(
-            _textSpeech,
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
+      body: Column(
+        children: [
+          SingleChildScrollView(
+            reverse: true,
+            child: Container(
+              child: Text(
+                _textSpeech,
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
+              ),
+            ),
           ),
-        ),
+          Container(
+            child: AvatarGlow(
+              animate: _isListening,
+              glowColor: Theme.of(context).primaryColor,
+              endRadius: 100,
+              duration: Duration(milliseconds: 2000),
+              repeatPauseDuration: Duration(milliseconds: 100),
+              repeat: true,
+              child: FloatingActionButton(
+                onPressed: () => onListen(),
+                child: Icon(_isListening ? Icons.mic : Icons.mic_none),
+              ),
+            ),
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: AvatarGlow(
-        animate: _isListening,
-        glowColor: Theme.of(context).primaryColor,
-        endRadius: 100,
-        duration: Duration(milliseconds: 2000),
-        repeatPauseDuration: Duration(milliseconds: 100),
-        repeat: true,
-        child: FloatingActionButton(
-          onPressed: () => onListen(),
-          child: Icon(_isListening ? Icons.mic : Icons.mic_none),
-        ),
-      ),
+      floatingActionButton: keyboardIsOpened
+          ? null
+          : FloatingActionButton.extended(
+              icon: Icon(Icons.backspace),
+              label: Text(
+                'Back',
+                style: kLableTextStyle,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
     );
   }
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project/googleMap.dart';
-import 'package:project/speechToText.dart';
+import 'file:///C:/Users/hp/AndroidStudioProjects/project/lib/map/googleMap.dart';
+import 'file:///C:/Users/hp/AndroidStudioProjects/project/lib/speech/speechToText.dart';
 import 'bottomButton.dart';
-import 'textToSpeech.dart';
+import 'text/textToSpeech.dart';
+import 'package:project/cameraapp/cameraapp.dart';
 
+// ignore: camel_case_types
 class homePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -66,8 +68,17 @@ class homePage extends StatelessWidget {
           ),
           Expanded(
             child: BottomButton(
-              buttontitle: 'Music Player',
-              onTap: () {},
+              buttontitle: 'Camera',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return CameraScreen();
+                    },
+                  ),
+                );
+              },
             ),
           ),
         ],

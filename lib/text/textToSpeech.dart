@@ -1,7 +1,7 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_text_to_speech/flutter_text_to_speech.dart';
-import 'constant.dart';
+import '../constant.dart';
 
 class Texttospeech extends StatefulWidget {
   @override
@@ -70,6 +70,7 @@ class _MyAppState extends State<Texttospeech> {
           ),
           Padding(
             padding: EdgeInsets.only(left: 40.0, right: 40.0),
+            // ignore: deprecated_member_use
             child: RaisedButton(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
