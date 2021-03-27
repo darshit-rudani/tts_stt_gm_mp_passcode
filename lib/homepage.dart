@@ -5,6 +5,7 @@ import 'file:///C:/Users/hp/AndroidStudioProjects/project/lib/speech/speechToTex
 import 'bottomButton.dart';
 import 'text/textToSpeech.dart';
 import 'package:project/cameraapp/cameraapp.dart';
+import 'package:project/music/musicPlayer.dart';
 
 // ignore: camel_case_types
 class homePage extends StatelessWidget {
@@ -53,13 +54,13 @@ class homePage extends StatelessWidget {
           ),
           Expanded(
             child: BottomButton(
-              buttontitle: 'Google Map',
+              buttontitle: 'Music Player',
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return Googlemap();
+                      return Musicplayer();
                     },
                   ),
                 );
@@ -75,6 +76,21 @@ class homePage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) {
                       return CameraScreen();
+                    },
+                  ),
+                );
+              },
+            ),
+          ),
+          Expanded(
+            child: BottomButton(
+              buttontitle: 'Google Map',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Googlemap();
                     },
                   ),
                 );

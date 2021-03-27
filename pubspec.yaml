@@ -17,6 +17,8 @@ dependencies:
   path: ^1.6.2
   esys_flutter_share: ^1.0.2
   flutter_map:
+  audioplayers: ^0.14.2
+  file_picker: ^1.5.0+2
 
   cupertino_icons: ^1.0.2
   speech_to_text: ^3.1.0
@@ -29,4 +31,7 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+
+  assets:
+    - images/
 
