@@ -215,13 +215,13 @@ class _CameraScreenState extends State {
       final path =
           join((await getTemporaryDirectory()).path, '${DateTime.now()}.png');
       await controller.takePicture(path);
-
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => PreviewScreen(
-                  imgPath: path,
-                )),
+          builder: (context) => PreviewScreen(
+            imgPath: path,
+          ),
+        ),
       );
     } catch (e) {
       _showCameraException(e);

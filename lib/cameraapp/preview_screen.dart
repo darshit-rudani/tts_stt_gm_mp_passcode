@@ -6,16 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 
-class PreviewScreen extends StatefulWidget{
+class PreviewScreen extends StatefulWidget {
   final String imgPath;
 
   PreviewScreen({this.imgPath});
 
   @override
   _PreviewScreenState createState() => _PreviewScreenState();
-
 }
-class _PreviewScreenState extends State<PreviewScreen>{
+
+class _PreviewScreenState extends State<PreviewScreen> {
+  String albumName = 'Media';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +30,10 @@ class _PreviewScreenState extends State<PreviewScreen>{
           children: <Widget>[
             Expanded(
               flex: 2,
-              child: Image.file(File(widget.imgPath),fit: BoxFit.cover,),
+              child: Image.file(
+                File(widget.imgPath),
+                fit: BoxFit.cover,
+              ),
             ),
             Align(
               alignment: Alignment.bottomCenter,
@@ -36,15 +41,33 @@ class _PreviewScreenState extends State<PreviewScreen>{
                 width: double.infinity,
                 height: 60.0,
                 color: Colors.black,
-                child: Center(
-                  child: IconButton(
-                    icon: Icon(Icons.share,color: Colors.white,),
-                    onPressed: (){
-                      getBytesFromFile().then((bytes){
-                        Share.file('Share via', basename(widget.imgPath), bytes.buffer.asUint8List(),'image/path');
-                      });
-                    },
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.file_download,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                    Expanded(
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.share,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          getBytesFromFile().then((bytes) {
+                            Share.file('Share via', basename(widget.imgPath),
+                                bytes.buffer.asUint8List(), 'image/path');
+                          });
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
             )
@@ -54,7 +77,7 @@ class _PreviewScreenState extends State<PreviewScreen>{
     );
   }
 
-  Future<ByteData> getBytesFromFile() async{
+  Future<ByteData> getBytesFromFile() async {
     Uint8List bytes = File(widget.imgPath).readAsBytesSync();
     return ByteData.view(bytes.buffer);
   }
