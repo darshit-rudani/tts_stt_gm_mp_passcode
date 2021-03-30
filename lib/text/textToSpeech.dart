@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_text_to_speech/flutter_text_to_speech.dart';
-import '../constant.dart';
+import '../homepage.dart';
 
 class Texttospeech extends StatefulWidget {
   @override
@@ -22,7 +22,9 @@ class _MyAppState extends State<Texttospeech> {
   Widget build(BuildContext context) {
     bool keyboardIsOpened = MediaQuery.of(context).viewInsets.bottom != 0.0;
     return Scaffold(
+      backgroundColor: Color(0x61330355),
       appBar: AppBar(
+        backgroundColor: Color(0xff6809e0),
         leading: IconButton(
           icon: Icon(
             Icons.home,
@@ -30,7 +32,14 @@ class _MyAppState extends State<Texttospeech> {
           ),
           color: Colors.grey,
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return homePage();
+                },
+              ),
+            );
           },
         ),
         title: Padding(
@@ -50,6 +59,7 @@ class _MyAppState extends State<Texttospeech> {
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.all(10.0),
                 border: OutlineInputBorder(
+                  borderSide: new BorderSide(color: Colors.teal),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
@@ -95,18 +105,24 @@ class _MyAppState extends State<Texttospeech> {
           ),
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: keyboardIsOpened
           ? null
           : FloatingActionButton.extended(
+              backgroundColor: Color(0xff6809e0),
               icon: Icon(Icons.backspace),
               label: Text(
                 'Back',
-                style: kLableTextStyle,
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
               ),
               onPressed: () {
-                Navigator.pop(
+                Navigator.push(
                   context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return homePage();
+                    },
+                  ),
                 );
               },
             ),

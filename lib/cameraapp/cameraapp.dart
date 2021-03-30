@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../homepage.dart';
 import 'preview_screen.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -64,7 +65,9 @@ class _CameraScreenState extends State {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0x61330355),
       appBar: AppBar(
+        backgroundColor: Color(0xff6809e0),
         leading: IconButton(
           icon: Icon(
             Icons.home,
@@ -72,7 +75,14 @@ class _CameraScreenState extends State {
           ),
           color: Colors.grey,
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return homePage();
+                },
+              ),
+            );
             setState(() {
               controller.dispose();
             });

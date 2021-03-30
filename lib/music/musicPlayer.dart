@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import '../homepage.dart';
 
 class Musicplayer extends StatefulWidget {
   @override
@@ -34,7 +35,9 @@ class _MusicplayerState extends State<Musicplayer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0x61190028),
       appBar: AppBar(
+        backgroundColor: Color(0xff6809e0),
         leading: IconButton(
           icon: Icon(
             Icons.home,
@@ -43,7 +46,14 @@ class _MusicplayerState extends State<Musicplayer> {
           color: Colors.grey,
           onPressed: () {
             _audioPlayer.pause();
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return homePage();
+                },
+              ),
+            );
           },
         ),
         title: Padding(
@@ -54,7 +64,6 @@ class _MusicplayerState extends State<Musicplayer> {
           ),
         ),
       ),
-      backgroundColor: Colors.black,
       body: Stack(
         children: <Widget>[
           Container(

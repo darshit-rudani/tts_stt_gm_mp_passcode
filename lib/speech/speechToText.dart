@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:avatar_glow/avatar_glow.dart';
+import '../homepage.dart';
 
 class Speechtotext extends StatefulWidget {
   @override
@@ -55,7 +56,9 @@ class _SpeechtotextState extends State<Speechtotext> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0x61330355),
       appBar: AppBar(
+        backgroundColor: Color(0xff6809e0),
         leading: IconButton(
           icon: Icon(
             Icons.home,
@@ -63,7 +66,14 @@ class _SpeechtotextState extends State<Speechtotext> {
           ),
           color: Colors.grey,
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return homePage();
+                },
+              ),
+            );
           },
         ),
         title: Padding(
@@ -93,8 +103,9 @@ class _SpeechtotextState extends State<Speechtotext> {
         repeatPauseDuration: Duration(milliseconds: 100),
         repeat: true,
         child: FloatingActionButton(
+          backgroundColor: Color(0xff6809e0),
           onPressed: () => onListen(),
-          child: Icon(_isListening ? Icons.mic : Icons.mic_none),
+          child: Icon(_isListening ? Icons.mic : Icons.mic_none,),
         ),
       ),
     );

@@ -35,14 +35,8 @@ const kResultTextStyle = TextStyle(
   color: Color(0xFF009688),
 );
 
-const kBMITextStyle = TextStyle(
+const kSidebarText = TextStyle(
   fontWeight: FontWeight.w900,
-  fontSize: 100.0,
-  color: Color(0xFFFFFFFF),
-);
-
-const kBodyStyle = TextStyle(
-  fontWeight: FontWeight.bold,
-  fontSize: 30.0,
+  fontSize: 25.0,
   color: Color(0xFFFFFFFF),
 );

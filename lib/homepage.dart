@@ -1,50 +1,102 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project/password.dart';
+import 'constant.dart';
 import 'file:///C:/Users/hp/AndroidStudioProjects/project/lib/map/googleMap.dart';
 import 'file:///C:/Users/hp/AndroidStudioProjects/project/lib/speech/speechToText.dart';
-import 'bottomButton.dart';
 import 'text/textToSpeech.dart';
 import 'package:project/cameraapp/cameraapp.dart';
 import 'package:project/music/musicPlayer.dart';
-import 'password.dart';
 
 // ignore: camel_case_types
 class homePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0x61330355),
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.home,
-            size: 40.0,
-          ),
-          color: Colors.grey,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return Demo();
-                },
-              ),
-            );
-          },
-        ),
-        title: Padding(
-          padding: const EdgeInsets.only(left: 55.0),
+        backgroundColor: Color(0xff6809e0),
+        title: Container(
+          margin: EdgeInsets.all(65),
           child: Text(
-            'Music Player',
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30.0),
+            'Project',
+            style: TextStyle(
+              fontWeight: FontWeight.w900,
+              fontSize: 30,
+            ),
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            child: BottomButton(
-              buttontitle: 'Text To Speech',
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Container(
+              child: Image.asset(
+                "images/s5.png",
+                fit: BoxFit.fill,
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: 80,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Center(
+                child: Text(
+                  'You have complete Authentication..',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 10.0,
+                        color: Colors.black45,
+                        offset: Offset(10.0, 10.0),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            Column(
+              children: [
+                DrawerHeader(
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: CircleAvatar(
+                      radius: 60.0,
+                      backgroundImage: AssetImage('images/s2.jpg'),
+                    ),
+                  ),
+                ),
+                Text(
+                  'What you want to perform',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            ListTile(
+              //0xff450368
+              title: Text(
+                '->   Text To Speech',
+                style: kSidebarText,
+              ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -56,10 +108,11 @@ class homePage extends StatelessWidget {
                 );
               },
             ),
-          ),
-          Expanded(
-            child: BottomButton(
-              buttontitle: 'Speech To Text',
+            ListTile(
+              title: Text(
+                '->   Speech To Text',
+                style: kSidebarText,
+              ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -71,10 +124,11 @@ class homePage extends StatelessWidget {
                 );
               },
             ),
-          ),
-          Expanded(
-            child: BottomButton(
-              buttontitle: 'Music Player',
+            ListTile(
+              title: Text(
+                '->   Music Player',
+                style: kSidebarText,
+              ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -86,25 +140,11 @@ class homePage extends StatelessWidget {
                 );
               },
             ),
-          ),
-          Expanded(
-            child: BottomButton(
-              buttontitle: 'Camera',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return CameraScreen();
-                    },
-                  ),
-                );
-              },
-            ),
-          ),
-          Expanded(
-            child: BottomButton(
-              buttontitle: 'Google Map',
+            ListTile(
+              title: Text(
+                '->   Google Map',
+                style: kSidebarText,
+              ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -116,8 +156,46 @@ class homePage extends StatelessWidget {
                 );
               },
             ),
-          ),
-        ],
+            ListTile(
+              title: Text(
+                '->   Camera',
+                style: kSidebarText,
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return CameraScreen();
+                    },
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Color(0xff6809e0),
+        icon: Icon(
+          Icons.backspace,
+          color: Colors.black,
+        ),
+        label: Text(
+          'Back',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return DemoPage();
+              },
+            ),
+          );
+        },
       ),
     );
   }

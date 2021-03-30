@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:project/homepage.dart';
+
+import '../constant.dart';
 
 class Googlemap extends StatelessWidget {
   @override
@@ -113,10 +116,30 @@ class _MyHomePageState extends State<MyHomePage> {
                   button(_goToposition1, Icons.location_searching),
                 ],
               ),
+
             ),
           )
         ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Colors.blue,
+        icon: Icon(Icons.backspace,color: Colors.black,),
+        label: Text(
+          'Back',
+          style: kLableTextStyle,
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,MaterialPageRoute(
+            builder: (context) {
+              return homePage();
+            },
+          ),
+          );
+        },
+      ),
     );
   }
 }
+

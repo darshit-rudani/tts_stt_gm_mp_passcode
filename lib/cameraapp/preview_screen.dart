@@ -21,7 +21,9 @@ class _PreviewScreenState extends State<PreviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0x61330355),
       appBar: AppBar(
+        backgroundColor: Color(0xff6809e0),
         automaticallyImplyLeading: true,
         leading: IconButton(
           icon: Icon(
