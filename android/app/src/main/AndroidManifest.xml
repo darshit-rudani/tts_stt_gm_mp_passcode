@@ -8,6 +8,8 @@
     <application
         android:label="project"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDHjTjib4emseiR5zZ4Ye3c1jDgaRXinwI"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -120,7 +120,7 @@ class _MusicplayerState extends State<Musicplayer> {
                   currentTime,
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
-                    fontSize: 25,
+                    fontSize: 20,
                     color: Colors.black,
                   ),
                 ),
@@ -136,12 +136,12 @@ class _MusicplayerState extends State<Musicplayer> {
                   completeTime,
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
-                    fontSize: 25,
+                    fontSize: 20,
                     color: Colors.black,
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(bottom: 20, right: 15),
+                  margin: EdgeInsets.only(bottom: 20, right: 17),
                   child: IconButton(
                     icon: Icon(
                       Icons.stop,

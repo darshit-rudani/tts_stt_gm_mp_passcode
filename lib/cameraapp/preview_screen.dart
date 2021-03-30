@@ -23,6 +23,23 @@ class _PreviewScreenState extends State<PreviewScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
+        leading: IconButton(
+          icon: Icon(
+            Icons.home,
+            size: 40.0,
+          ),
+          color: Colors.grey,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 55.0),
+          child: Text(
+            'Music Player',
+            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30.0),
+          ),
+        ),
       ),
       body: Container(
         child: Column(

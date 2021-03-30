@@ -1,4 +1,3 @@
-import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_text_to_speech/flutter_text_to_speech.dart';
 import '../constant.dart';
@@ -9,11 +8,10 @@ class Texttospeech extends StatefulWidget {
 }
 
 class _MyAppState extends State<Texttospeech> {
-
   VoiceController controller = FlutterTextToSpeech.instance.voiceController();
   TextEditingController textController = TextEditingController();
   bool _isListening = false;
-
+  bool value = false;
   @override
   void initState() {
     super.initState();
@@ -46,9 +44,6 @@ class _MyAppState extends State<Texttospeech> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          SizedBox(
-            height: 20.0,
-          ),
           Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 20.0),
             child: TextField(
@@ -64,9 +59,6 @@ class _MyAppState extends State<Texttospeech> {
               ),
               controller: textController,
             ),
-          ),
-          SizedBox(
-            height: 50.0,
           ),
           Padding(
             padding: EdgeInsets.only(left: 40.0, right: 40.0),
@@ -101,21 +93,6 @@ class _MyAppState extends State<Texttospeech> {
               color: Color(0xff6809e0),
             ),
           ),
-          Expanded(
-            flex: 5,
-            child: AvatarGlow(
-              glowColor: Colors.white,
-              animate: _isListening,
-              endRadius: 100,
-              repeat: true,
-              duration: Duration(milliseconds: 2000),
-              repeatPauseDuration: Duration(milliseconds: 100),
-              child: FloatingActionButton(
-                onPressed: () {},
-                child: Icon(Icons.mic),
-              ),
-            ),
-          ),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -128,7 +105,9 @@ class _MyAppState extends State<Texttospeech> {
                 style: kLableTextStyle,
               ),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(
+                  context,
+                );
               },
             ),
     );

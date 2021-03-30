@@ -6,6 +6,7 @@ import 'bottomButton.dart';
 import 'text/textToSpeech.dart';
 import 'package:project/cameraapp/cameraapp.dart';
 import 'package:project/music/musicPlayer.dart';
+import 'password.dart';
 
 // ignore: camel_case_types
 class homePage extends StatelessWidget {
@@ -13,9 +14,28 @@ class homePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
+        leading: IconButton(
+          icon: Icon(
+            Icons.home,
+            size: 40.0,
+          ),
+          color: Colors.grey,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return Demo();
+                },
+              ),
+            );
+          },
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 55.0),
           child: Text(
-            'Flutter Project',
+            'Music Player',
+            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30.0),
           ),
         ),
       ),

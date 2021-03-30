@@ -1,58 +1,120 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong/latlong.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Googlemap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.home,
-            size: 40.0,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  Completer<GoogleMapController> _controller = Completer();
+  static const LatLng _center = const LatLng(21.212439, 72.857945);
+  LatLng _lastMapPosition = _center;
+  Set<Marker> _m = {};
+  Set<Marker> _markers = {};
+  MapType _currentmaptype = MapType.normal;
+
+  static final CameraPosition _position1 = CameraPosition(
+    target: LatLng(21.212439, 72.857945),
+    zoom: 15,
+  );
+
+  Future<void> _goToposition1() async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(_position1));
+  }
+
+  _onMapCreated(GoogleMapController controller) {
+    _controller.complete(controller);
+  }
+
+  _onMapPointer() {
+    setState(() {
+      _markers.add(
+        Marker(
+          markerId: MarkerId('id-1'),
+          position: LatLng(21.212439, 72.857945),
+          infoWindow: InfoWindow(
+            title: 'Surat',
+            snippet: 'Hirabaug Circle, Varachha Road',
           ),
-          color: Colors.grey,
-          onPressed: () {
-            Navigator.pop(context);
-          },
         ),
-        title: Padding(
-          padding: const EdgeInsets.only(left: 40.0),
-          child: Text(
-            'Google Map',
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30.0),
-          ),
-        ),
+      );
+      _m = _m == _m ? _markers : _m;
+    });
+  }
+
+  _onMapType() {
+    setState(() {
+      _currentmaptype = _currentmaptype == MapType.normal
+          ? MapType.satellite
+          : MapType.normal;
+    });
+  }
+
+  _onCameraMove(CameraPosition position) {
+    _lastMapPosition = position.target;
+  }
+
+  Widget button(Function function, IconData icon) {
+    return FloatingActionButton(
+      onPressed: function,
+      materialTapTargetSize: MaterialTapTargetSize.padded,
+      backgroundColor: Colors.blue,
+      child: Icon(
+        icon,
+        size: 36.0,
       ),
-      body: new FlutterMap(
-        options: new MapOptions(
-            center: new LatLng(34.056340, -118.232050), zoom: 13.0),
-        layers: [
-          new TileLayerOptions(
-            urlTemplate: "https://api.mapbox.com/v4/"
-                "{z}/{x}/{y}@2x.png?access_token={sk.eyJ1IjoiZHJva2UxMTEiLCJhIjoiY2ttcm9tZHZjMDNrODJ4bXdjeTkwdWh3eiJ9.oJev5ytVKHgDToUp5USxwQ}",
-            additionalOptions: {
-              'accessToken':
-                  'sk.eyJ1IjoiZHJva2UxMTEiLCJhIjoiY2ttcm9tZHZjMDNrODJ4bXdjeTkwdWh3eiJ9.oJev5ytVKHgDToUp5USxwQ',
-              'id': 'mapbox.streets',
-            },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          GoogleMap(
+            onMapCreated: _onMapCreated,
+            markers: _m,
+            initialCameraPosition: CameraPosition(
+              target: _center,
+              zoom: 15,
+            ),
+            mapType: _currentmaptype,
+            onCameraMove: _onCameraMove,
           ),
-          MarkerLayerOptions(markers: [
-            Marker(
-              width: 80.0,
-              height: 80.0,
-              point: LatLng(34.056340, -118.232050),
-              builder: (ctx) => Container(
-                child: IconButton(
-                  icon: Icon(Icons.add_location_alt),
-                  color: Color(0xff6200ee),
-                  iconSize: 45.0,
-                  onPressed: () {},
-                ),
+          Padding(
+            padding: EdgeInsets.only(top: 40.0, right: 10.0),
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Column(
+                children: <Widget>[
+                  button(_onMapType, Icons.map),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  button(_onMapPointer, Icons.add_location),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  button(_goToposition1, Icons.location_searching),
+                ],
               ),
-            )
-          ])
+            ),
+          )
         ],
       ),
     );
