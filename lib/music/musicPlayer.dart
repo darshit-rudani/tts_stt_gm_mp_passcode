@@ -57,10 +57,10 @@ class _MusicplayerState extends State<Musicplayer> {
           },
         ),
         title: Padding(
-          padding: const EdgeInsets.only(left: 55.0),
+          padding: const EdgeInsets.only(left: 50.0),
           child: Text(
             'Music Player',
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30.0),
+            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0),
           ),
         ),
       ),
@@ -86,11 +86,11 @@ class _MusicplayerState extends State<Musicplayer> {
             ),
           ),
           Container(
-            width: MediaQuery.of(context).size.width * 0.8,
+            width: MediaQuery.of(context).size.width * 1,
             height: 80,
             margin: EdgeInsets.only(
                 top: MediaQuery.of(context).size.height * 0.7,
-                left: MediaQuery.of(context).size.width * 0.1),
+                left: MediaQuery.of(context).size.width * 0),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),

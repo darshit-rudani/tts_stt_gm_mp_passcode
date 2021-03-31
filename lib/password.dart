@@ -10,7 +10,7 @@ class DemoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primaryColor: Colors.deepPurple),
+      theme: ThemeData.dark(),
       home: Demo(),
     );
   }
@@ -55,33 +55,41 @@ class _DemoState extends State<Demo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Container(
-              child: Image.asset(
-                "images/s5.png",
-                fit: BoxFit.fill,
+            SizedBox(height: 30,),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(top: 10,),
+                child: Image.asset(
+                  "images/s5.png",
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: 80,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                  'Please Unlock Application !!!',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 27,
-                    fontWeight: FontWeight.w900,
-                    shadows: [
-                      Shadow(
-                        blurRadius: 10.0,
-                        color: Colors.black45,
-                        offset: Offset(10.0, 10.0),
-                      ),
-                    ],
+            SizedBox(height: 30,),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(top: 40,bottom: 130),
+                width: MediaQuery.of(context).size.width * 1,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Center(
+                  child: Text(
+                    'Please Unlock Application !!!',
+                    style: TextStyle(
+                      color: Colors.black,
+                      backgroundColor: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      shadows: [
+                        Shadow(
+                          blurRadius: 10.0,
+                          color: Colors.black45,
+                          offset: Offset(10.0, 10.0),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

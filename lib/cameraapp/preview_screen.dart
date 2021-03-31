@@ -36,10 +36,10 @@ class _PreviewScreenState extends State<PreviewScreen> {
           },
         ),
         title: Padding(
-          padding: const EdgeInsets.only(left: 55.0),
+          padding: const EdgeInsets.only(left: 40.0),
           child: Text(
             'Music Player',
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30.0),
+            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 25.0),
           ),
         ),
       ),

@@ -31,33 +31,40 @@ class homePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Container(
-              child: Image.asset(
-                "images/s5.png",
-                fit: BoxFit.fill,
+            SizedBox(height: 30,),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(top: 10,),
+                child: Image.asset(
+                  "images/s5.png",
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: 80,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                  'You have complete Authentication..',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w900,
-                    shadows: [
-                      Shadow(
-                        blurRadius: 10.0,
-                        color: Colors.black45,
-                        offset: Offset(10.0, 10.0),
-                      ),
-                    ],
+            SizedBox(height: 30,),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(top: 40,bottom: 160),
+                width: MediaQuery.of(context).size.width * 1,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Center(
+                  child: Text(
+                    'You have complete Authentication..',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 19,
+                      fontWeight: FontWeight.w900,
+                      shadows: [
+                        Shadow(
+                          blurRadius: 10.0,
+                          color: Colors.black45,
+                          offset: Offset(10.0, 10.0),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

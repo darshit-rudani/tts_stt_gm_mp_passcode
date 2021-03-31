@@ -37,6 +37,6 @@ const kResultTextStyle = TextStyle(
 
 const kSidebarText = TextStyle(
   fontWeight: FontWeight.w900,
-  fontSize: 25.0,
+  fontSize: 20.0,
   color: Color(0xFFFFFFFF),
 );
