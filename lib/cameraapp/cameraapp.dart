@@ -89,7 +89,7 @@ class _CameraScreenState extends State {
           },
         ),
         title: Padding(
-          padding: const EdgeInsets.only(left: 50.0),
+          padding: const EdgeInsets.only(left: 60.0),
           child: Text(
             'Camera',
             style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30.0),

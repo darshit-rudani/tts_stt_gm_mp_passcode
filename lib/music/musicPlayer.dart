@@ -60,7 +60,7 @@ class _MusicplayerState extends State<Musicplayer> {
           padding: const EdgeInsets.only(left: 50.0),
           child: Text(
             'Music Player',
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0),
+            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30.0),
           ),
         ),
       ),

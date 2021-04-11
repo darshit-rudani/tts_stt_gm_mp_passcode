@@ -80,7 +80,7 @@ class _SpeechtotextState extends State<Speechtotext> {
           padding: const EdgeInsets.only(left: 40.0),
           child: Text(
             'Speech To Text',
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0),
+            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30.0),
           ),
         ),
       ),

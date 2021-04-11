@@ -46,7 +46,7 @@ class _MyAppState extends State<Texttospeech> {
           padding: const EdgeInsets.only(left: 40.0),
           child: Text(
             'Text To Speech',
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0),
+            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30.0),
           ),
         ),
       ),
